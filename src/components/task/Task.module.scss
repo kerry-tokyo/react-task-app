@@ -1,0 +1,54 @@
+@import "~styles/config";
+
+.task {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: $gutter $gutter;
+  &__nav {
+    @include flex($justify-content: space-between);
+    padding-bottom: $gutter;
+  }
+  &__add {
+    display: block;
+    padding: $gutter;
+    & svg {
+      @include icon;
+    }
+  }
+  &__item {
+    @include card;
+    display: grid;
+    grid-template-columns: 4.5rem 1fr;
+    transition: $fade;
+    @media (max-width: $phablet) {
+      grid-template-columns: 1fr;
+      grid-gap: 1rem;
+    }
+    &:hover {
+      box-shadow: $shadow;
+    }
+
+    &__done {
+      @include inline-flex;
+      width: 2.3rem;
+      height: 2.3rem;
+      border-radius: $circle;
+      border: $border;
+      margin-right: $gutter;
+      transition: $fade;
+
+      & svg {
+        @include icon-fix(
+          $icon-color: $horizontalRule,
+          $icon-size: $icon-size-min
+        );
+      }
+      &:hover {
+        background: rgba($green, 0.2);
+        & svg * {
+          fill: $green;
+        }
+      }
+    }
+  }
+}

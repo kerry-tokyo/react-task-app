@@ -1,0 +1,122 @@
+@import '~styles/reset';
+@import '~styles/fonts.scss';
+/* stylelint-disable selector-max-type  */
+@-ms-viewport {
+  width: device-width;
+}
+@-o-viewport {
+  width: device-width;
+}
+@viewport {
+  width: device-width;
+}
+
+:root {
+  @if global-variable-exists(scale) {
+    --scale-element: 1;
+    --scale-font: 1;
+    @each $size in $scale {
+      @media (max-height: nth($size, 1)) {
+        --scale-element: #{nth($size, 2)};
+        --scale-font: #{nth($size, 2)};
+      }
+    }
+  }
+}
+
+body,
+html {
+  min-height: 100vh;
+  background-color: $background-color;
+}
+
+html {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  overflow-y: scroll; // always show the vertical scrollbar so that content doesn't jump
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+// inherited from <html>
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  font-family: $sans;
+  line-height: $line-height;
+  font-size: $font-size;
+  color: $paragraph;
+  font-feature-settings: 'palt';
+  font-weight: 400;
+  height: 100%;
+  letter-spacing: $font-kerning;
+  padding: 0;
+  font-kerning: normal;
+  @media (max-width: $phone) {
+    font-size: $font-size-app;
+  }
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// placeholders
+input,
+select,
+textarea {
+  &::-webkit-input-placeholder {
+    color: $placeholder;
+  }
+
+  &::-moz-placeholder {
+    opacity: 1;
+    color: $placeholder;
+  }
+
+  &:-ms-input-placeholder {
+    color: $placeholder;
+  }
+}
+
+//horizontalRule
+hr {
+  position: relative;
+  width: auto;
+  text-align: center;
+  border: 0;
+  border-top: $border;
+  background-repeat: repeat-x;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-position: center;
+  margin: 0 $container-gutter;
+}
+
+.hr {
+  position: relative;
+  width: auto;
+  text-align: center;
+  border: 0;
+  border-top: $border;
+  background-repeat: repeat-x;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-position: center;
+  margin: 0;
+}
+
+.sticky {
+  position: sticky;
+  top: 35%;
+  align-self: baseline;
+}

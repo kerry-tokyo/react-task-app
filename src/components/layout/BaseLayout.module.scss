@@ -1,0 +1,15 @@
+@import "~styles/config";
+
+:global {
+  @import "~styles/base";
+}
+
+.layout {
+  @include inline-flex($align-items: flex-start);
+  min-height: 100vh;
+  width: 100vw;
+  padding: $hero-gutter $container-gutter 0;
+  &__inner {
+    max-width: $tablet;
+  }
+}
